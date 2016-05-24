@@ -31,6 +31,9 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
+ADD ./application/www /var/www
+RUN chown -R www-data:www-data /var/www
+
 #--------------------------------------------------------------------------------
 # Default Command
 
