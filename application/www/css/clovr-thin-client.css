@@ -11,6 +11,15 @@ body {
     background-color: #F3F3F4;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+}
+
+h2 {
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+}
+
 /* Toggle Styles */
 
 #wrapper {
@@ -194,7 +203,7 @@ body {
     border-color: #e7eaec;
     border-image: none;
     border-style: solid solid none;
-    border-width: 1px 0; 
+    border-width: 10px 0; 
 }
 
 .no-margins {
@@ -203,6 +212,36 @@ body {
 
 .float-e-margins {
 }
+
+.white-bg {
+    background-color: #fff;
+}
+
+.page-heading {
+    border-top: 0;
+    padding: 0 10px 10px 22px;
+}
+
+.border-top {
+    border-top: 5px solid #e7eaec ! important
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e7eaec ! important;
+}
+
+.launch-ec2 {
+    padding: 0 0 15px 25px;
+}
+
+.small {
+    font-size: 92%;
+}
+
+.spacer-bottom {
+    padding-bottom: 25px;
+}
+
 
 /* Forms stuff */
 .sign-up .left-inner-addon {
@@ -285,14 +324,103 @@ input[readonly] {
       cursor: text !important;
     }
 
-/* Chart related styles */
-#chart svg {
-    width: 100%;
-    height: 550px;
-}
-
 /** Misc stuff **/
 u.dotted {
     border-bottom: 1px dashed #999;
     text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    padding: .8em 1.4em;
+    padding-right: 1.3em;
+    background: #337AB7;
+    border: 5px solid;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    color: white;
+    transition: .2s;
+}
+
+.button:before,
+.button:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 16px;
+    padding-bottom: inherit;
+    width: 2.8em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    transition: .2s;
+}
+
+.button:before {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background: #0079a5;
+}
+
+.button:active,
+.button:focus {
+    background: #002e3f;
+    outline: none;
+}
+
+.button {
+    min-width: 25em;
+    min-height: 5em;
+}
+
+.clovr-start:after {
+    content: "\f0ee";
+}
+
+.clovr-start:hover:after {
+    -webkit-animation: none;
+    -webkit-transform: scale(1.4);
+    animation: none;
+    transform: scale(1.4);
+}
+
+@-webkit-keyframes bounceright {
+    from {
+    -webkit-transform: translateX(0);
+    }
+    to {
+    -webkit-transform: translateX(3px);
+    }
+}
+
+@-webkit-keyframes wiggle {
+    from {
+    -webkit-transform: rotate(0deg);
+    }
+    to {
+    -webkit-transform: rotate(30deg);
+    }
+}
+
+@keyframes bounceright {
+    from {
+    transform: translateX(0);
+    }
+    to {
+    transform: translateX(3px);
+    }
+}
+
+@keyframes wiggle {
+    from {
+    transform: rotate(0deg);
+    }
+    to {
+    transform: rotate(30deg);
+    }
 }
