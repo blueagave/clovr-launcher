@@ -1,3 +1,28 @@
+$('.clovr-start').on('click', function() {
+    BootstrapDialog.show({
+        type: BootstrapDialog.TYPE_WARNING,
+        title: 'WARNING: Regarding CloVR VM Termination',
+        message: 'A CloVR VM launched using this application will continue to run until terminated by the user. Closing this application, shutting down or restarting the PC or closing the browser window WILL NOT terminate a CloVR VM. In order to do so please use the Manage VM\'s utility.',
+        closable: false,
+        buttons: [{
+            id: 'btn-cancel',
+            icon: 'glyphicon glyphicon-ban-circle',
+            label: 'Cancel VM Launch',
+            cssClass: 'btn-danger',
+            action: function(dialogRef) {
+                dialogRef.close();
+            }
+
+        },
+        {
+            id: 'btn-ok',
+            icon: 'glyphicon glyphicon-check',
+            label: 'Continue VM Launch',
+            cssClass: 'btn-success',
+        }]
+    });
+})
+
 $(document).on('change', '.btn-file :file', function() {
   var input = $(this),
       numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -19,5 +44,4 @@ $(document).ready( function() {
         
     });
 });
-
 

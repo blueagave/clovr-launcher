@@ -15,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/nv.d3.css" rel="stylesheet">
+    <link href="css/bootstrap-dialog.min.css" rel="stylesheet">
     <link href="css/clovr-thin-client.css" rel="stylesheet">
 
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -59,13 +59,13 @@
                 <br />
                 </nav>
             </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-9">
+            <div class="row fix-margin wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9 fix-padding">
                    <h2>Start a CloVR VM on EC2</h2>
                 </div>
             </div>    
             <div class="row border-bottom"><br /></div>
-            <div class="row wrapper border-bottom white-bg spacer-top">
+            <div class="row fix-margin border-bottom white-bg spacer-top">
                 <div class="col-lg-12 launch-ec2">
                     <div class="ec2-text">
                         <span>
@@ -76,7 +76,7 @@
 
                         The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                         <div class="text-center">
-                            <button class="button clovr-start">Launch CloVR</button>
+                            <button class="button clovr-start" data-toggle="modal" data-target="#ec2-warn-launch">Launch CloVR</button>
                         </div>
                         <div class="text-center">
                             <small><u class="dotted"><a href="help-text">More options</a></u></small>
@@ -86,7 +86,6 @@
             </div>            
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
@@ -96,6 +95,9 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+    <!-- Bootstrap Dialog JavaScript -->
+    <script src="js/bootstrap-dialog.min.js"></script>
+ 
     <!-- Thin Client JS -->
     <script src="js/clovr_thin_client.js"></script>
 

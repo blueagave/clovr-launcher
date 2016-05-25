@@ -235,7 +235,7 @@ a {
 }
 
 .launch-ec2 {
-    padding: 0 0 15px 25px;
+    padding: 0 55px 15px 25px;
 }
 
 .small {
@@ -246,6 +246,25 @@ a {
     padding-bottom: 25px;
 }
 
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 
 /* Forms stuff */
 .sign-up .left-inner-addon {
@@ -302,6 +321,10 @@ a {
     margin: 0 auto;
 }
 
+.fix-padding {
+    padding-left: 0px;
+}
+
 /* input fields */
 .btn-file {
     position: relative;
@@ -321,6 +344,11 @@ a {
     background: white;
     cursor: inherit;
     display: block;
+}
+
+.row {
+    margin-right: 0 ! important;
+    margin-left: 0 ! important;
 }
 
 input[readonly] {
