@@ -24,6 +24,39 @@ a {
     text-decoration: none ! important;
 }
 
+.table {
+    margin-bottom: 5px ! important;
+    text-align: center;
+}
+
+thead > tr > th {
+    text-align: center;
+}
+
+.ec2-monitor > table > tbody > tr > th {
+    width: 25px;
+}
+
+#update-timestamp {
+    font-style: italic;
+    font-weight: bold;
+    padding-left: 3px;
+}
+
+.ec2-alert {
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.big-icon {
+    font-size: 24px ! important;
+}
+
+.fa {
+    display: inline;
+}
+
 /* Toggle Styles */
 
 #wrapper {
@@ -238,6 +271,7 @@ a {
     padding: 0 55px 15px 25px;
 }
 
+
 .small {
     font-size: 92%;
 }
@@ -355,6 +389,11 @@ input[readonly] {
       background-color: white !important;
       cursor: text !important;
     }
+
+.terminate {
+    text-align: center;
+    width: 45px;
+}
 
 /** Misc stuff **/
 u.dotted {
