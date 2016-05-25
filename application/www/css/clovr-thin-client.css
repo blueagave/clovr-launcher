@@ -37,6 +37,19 @@ thead > tr > th {
     width: 25px;
 }
 
+.ec2-monitor table thead th {
+    background: #4C79B1;
+    color: #fff;
+    border-top: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    border-left: 0;
+    border-right: 0;
+}
+
+td.disabled {
+    opacity: 0.3;
+}
+
 #update-timestamp {
     font-style: italic;
     font-weight: bold;
@@ -51,6 +64,25 @@ thead > tr > th {
 
 .big-icon {
     font-size: 24px ! important;
+}
+
+.fa-icon-red {
+    color: red;
+}
+
+.instance-run {
+    font-weight: bold;
+    color: green;
+}
+
+.instance-pend {
+    font-weight: bold;
+    color: orange;
+}
+
+.instance-term {
+    font-weight: bold;
+    color: red;
 }
 
 .fa {
