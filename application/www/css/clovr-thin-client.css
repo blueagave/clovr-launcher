@@ -38,6 +38,16 @@ thead > tr > th {
     text-align: center;
 }
 
+#vm_options {
+    margin-top: 10px;
+    width: 400px;
+    padding-left: 10px;
+}
+
+#vm_options select {
+    margin-bottom: 15px;
+}
+
 .ec2-monitor table thead th {
     background: #4C79B1;
     color: #fff;

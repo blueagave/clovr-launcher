@@ -30,6 +30,12 @@ $(document).on('change', '.btn-file :file', function() {
   input.trigger('fileselect', [numFiles, label]);
 });
 
+$('.toggle').click(function(event) {
+    event.preventDefault();
+    var target = $(this).attr('href');
+    $(target).toggleClass('hidden show');
+});
+
 $(document).ready( function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         

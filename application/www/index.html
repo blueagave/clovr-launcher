@@ -79,7 +79,26 @@
                             <button class="button clovr-start" data-toggle="modal" data-target="#ec2-warn-launch">Launch CloVR</button>
                         </div>
                         <div class="text-center">
-                            <small><u class="dotted"><a href="help-text">More options</a></u></small>
+                            <small><u class="dotted"><a class="toggle" href="#vm_options">More options</a></u></small>
+                        </div>
+
+                        <div id="vm_options" class="hidden center-block text-center">
+                            <label for="ami_select">Select VM Image</label>
+                            <select id-"ami_select" class="form-control">
+                                <option>clovr-standard-2011-07-01-11-04-17</option>
+                                <option>clovr-standard-2011-10-19-03-00-27</option>
+                                <option>clovr-standard-2015-08-06-19-44-18</option>
+                                <option>clovr-standard-2016-05-27-17-04-01</option>
+                            </select>
+
+                            <label for="instance_type_select">Select Instance Type</label>
+                            <select id-"instance_type_select" class="form-control">
+                                <option>m1.xlarge (8 CPUs / 16GB RAM)</option>
+                                <option>m2.xlarge (8 CPUs / 32GB RAM)</option>
+                                <option>m4.xlarge (4 CPUs / 128GB RAM)</option>
+                                <option>c2.large (16 CPUs / 8GB RAM)</option>
+                            </select>
+
                         </div>
                     </div>                        
                 </div>
