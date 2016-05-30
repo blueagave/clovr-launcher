@@ -33,8 +33,9 @@ thead > tr > th {
     text-align: center;
 }
 
-.ec2-monitor > table > tbody > tr > th {
+#vm_monitor > tbody > tr > th {
     width: 25px;
+    text-align: center;
 }
 
 .ec2-monitor table thead th {
@@ -67,7 +68,7 @@ td.disabled {
 }
 
 .fa-icon-red {
-    color: red;
+    color: #db0000;
 }
 
 .instance-run {

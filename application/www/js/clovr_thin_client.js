@@ -43,5 +43,10 @@ $(document).ready( function() {
         }
         
     });
+
+    $('#vm_monitor').DataTable({
+        ordering: false,
+        lengthChange: false,
+    });
 });
 

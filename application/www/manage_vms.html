@@ -17,7 +17,7 @@
     <!-- Custom CSS -->
     <link href="css/bootstrap-dialog.min.css" rel="stylesheet">
     <link href="css/clovr-thin-client.css" rel="stylesheet">
-
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,7 +43,7 @@
                     <a href="#"><i class="fa fa-fw fa-cloud"></i>Start a CloVR VM</a>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-fw fa-bar-chart"></i>Manage VM's</a>
+                    <a href="#"><i class="fa fa-fw fa-eye"></i>Manage VM's</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-sign-out"></i>Exit</a>
@@ -72,7 +72,8 @@
                     </div>
                     <div class="ec2-monitor">
                         <p class="small">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                        <table class="table table-bordered table-hover table-striped">
+
+                        <table id="vm_monitor" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -125,9 +126,71 @@
                                     <td class="instance-run">Running</td>
                                     <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
                                 </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>i68d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>i77d02be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>i99d15be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">11</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15</th>
+                                    <td>i38d12be</td>
+                                    <td>m1.xlarge</td>
+                                    <td class="instance-run">Running</td>
+                                    <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
+                                </tr>
                             </tbody>                                
                         </table>
-                        <small id="update-timestamp">Last updated 2016-25-05 15:13:33 EDT</small>          
                     </div>            
                 </div>
             </div>            
@@ -139,12 +202,18 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
+    <!-- jQuery Data Tables -->
+    <script src="js/jquery.dataTables.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Dialog JavaScript -->
     <script src="js/bootstrap-dialog.min.js"></script>
- 
+
+    <!-- jquery Data Tables Bootstrap Integration -->
+    <script src="js/dataTables.bootstrap.min.js"></script>
+
     <!-- Thin Client JS -->
     <script src="js/clovr_thin_client.js"></script>
 
