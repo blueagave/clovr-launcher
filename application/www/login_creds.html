@@ -14,8 +14,13 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Launcher App CSS -->
     <link href="css/clovr-thin-client.css" rel="stylesheet">
 
+    <!-- Chardin.js CSS -->
+    <link href="css/chardinjs.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,14 +46,14 @@
                         <hr />
                         <fieldset>
                             <div class="form-group">
-                                <div class="right-inner-addon">
+                                <div class="right-inner-addon" data-position="right" data-intro="Provide a name for your credentials.">
                                     <i class="fa fa-user"></i>
                                     <input class="form-control input-lg" placeholder="Credential Name" type="text">
                                 </div>
                             </div>   
                             
                             <div class="form-group">
-                                <div class="input-group right-inner-addon">
+                                <div class="input-group right-inner-addon" data-position="left" data-intro="Provide an EC2 private key file. This file can be downloaded from your Amazon AWS account page. For instruction on how to do this, click HERE.">
                                     <span class="input-group-btn">
                                         <span class="btn btn-primary btn-file btn-lg">
                                             Browse&hellip; <input type="file" />
@@ -60,7 +65,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <div class="input-group right-inner-addon">
+                                <div class="input-group right-inner-addon" data-position="right" data-intro="Provide an EC2 X.509 certificate file. This file can be downloaded from your Amazon AWS account page. For instructions on how to do this, click HERE.">
                                     <span class="input-group-btn">
                                         <span class="btn btn-primary btn-file btn-lg">
                                             Browse&hellip; <input type="file" />
@@ -73,11 +78,11 @@
                         </fieldset>
 
                         <div class="text-center">
-                            <u class="dotted"><a class="help-text text-center" href="#">Give me some help here!</a></u>
+                            <u class="dotted"><a id="toggle_help" class="help-text text-center" href="#">Give me some help here!</a></u>
                         </div>
 
                         <br>
-                        <div class=" text-center">
+                        <div class=" text-center" data-position="bottom" data-intro="Click the 'Login' button to validate your private key and certificate files and login to the appliance.">
                             <button class="btn btn-primary btn-lg btn-block">Login</button>
                         </div>
                     </div>
@@ -91,6 +96,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Chardin.js JavaScript -->
+    <script src="js/chardinjs.min.js"></script>
 
     <!-- Thin Client JS -->
     <script src="js/clovr_thin_client.js"></script>

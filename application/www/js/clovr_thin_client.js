@@ -36,6 +36,7 @@ $('.toggle').click(function(event) {
     $(target).toggleClass('hidden show');
 });
 
+
 $(document).ready( function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         
@@ -50,9 +51,16 @@ $(document).ready( function() {
         
     });
 
-    $('#vm_monitor').DataTable({
-        ordering: false,
-        lengthChange: false,
+    if ( $('#vm_monitor').length ) {
+        $('#vm_monitor').DataTable({
+            ordering: false,
+            lengthChange: false,
+        });
+    }
+
+    $('#toggle_help').on('click', function(e) {
+        e.preventDefault();
+        $('body').chardinJs('toggle');
     });
 });
 
