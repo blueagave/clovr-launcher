@@ -41,11 +41,16 @@ thead > tr > th {
 #vm_options {
     margin-top: 10px;
     width: 400px;
-    padding-left: 11px;
 }
 
 #vm_options select {
     margin-bottom: 15px;
+}
+
+#ec2_logo {
+    width: 550px;
+    height: 153px;
+    margin: 12px 0 12px 0;
 }
 
 .ec2-monitor table thead th {
