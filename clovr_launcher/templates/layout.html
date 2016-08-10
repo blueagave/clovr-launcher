@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    {% block head %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/clovr-thin-client.css') }}"/>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chardinjs.css') }}"/>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}"/>
+
+        <!-- jQuery -->
+        <script src="/static/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/static/js/bootstrap.min.js"></script>
+
+        <!-- Bootstrap Dialog JavaScript -->
+        <script src="/static/js/bootstrap-dialog.min.js"></script>
+     
+        <!-- Thin Client JS -->
+        <script src="/static/js/clovr_thin_client.js"></script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script>
+
+        <title>CloVR-Launcher - {% block title %}{% endblock %}</title>
+    </head>
+    {% endblock %}
+    
+    <body>
+        {%  block sidebar %}
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            <img alt="clovr logo" class="clovr-logo" src="{{ url_for('static', filename='img/logo-transparent.png') }}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('start_vm') }}"><i class="fa fa-fw fa-cloud"></i>Start a CloVR VM</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('manage_vms') }}"><i class="fa fa-fw fa-bar-chart-o"></i>Manage VM's</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('logout') }}"><i class="fa fa-fw fa-sign-out"></i>Exit</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            {% block content %}{% endblock %}
+            <!-- End Page Content -->
+        </div>
+        {% endblock %}
+        <!-- /#wrapper -->
+
+        {%  block nosidebar %}{% endblock %}
+
+    </body>
+</html>

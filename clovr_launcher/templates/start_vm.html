@@ -1,133 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- extend base layout -->
+{% extends "layout.html" %}
 
-<head>
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block title %}Start a CloVR VM{% endblock %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>CloVR VM EC2 Launcher</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/bootstrap-dialog.min.css" rel="stylesheet">
-    <link href="css/clovr-thin-client.css" rel="stylesheet">
-
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        <img alt="clovr logo" class="clovr-logo" src="img/logo-transparent.png">
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="index.html"><i class="fa fa-fw fa-cloud"></i>Start a CloVR VM</a>
-                </li>
-                <li>
-                    <a href="manage_vms.html"><i class="fa fa-fw fa-bar-chart-o"></i>Manage VM's</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-sign-out"></i>Exit</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="row border-bottom">
-                <nav class="nav navbar-static-top">
-                <br />
-                </nav>
-            </div>
-            <div class="row fix-margin wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-9 fix-padding">
-                   <h2>Start a CloVR VM on EC2</h2>
-                </div>
-            </div>    
-            <div class="row border-bottom"><br /></div>
-            <div class="row fix-margin border-bottom white-bg spacer-top">
-                <div class="col-lg-12 launch-ec2">
-                    <div class="ec2-text">
-                        <span>
-                            <img alt="EC2 logo" id="ec2_logo" src="img/ec2-logo-transparent.png">
-                        </span>
-                        <p class="small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <p class="small spacer-bottom">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                        <div class="text-center">
-                            <button class="button clovr-start" data-toggle="modal" data-target="#ec2-warn-launch">Launch CloVR</button>
-                        </div>
-                        <div class="text-center">
-                            <small><u class="dotted"><a class="toggle" href="#vm_options">More options</a></u></small>
-                        </div>
-
-                        <div id="vm_options" class="hidden center-block text-center">
-                            <label for="ami_select">Select VM Image</label>
-                            <select id-"ami_select" class="form-control">
-                                <option>clovr-standard-2011-07-01-11-04-17</option>
-                                <option>clovr-standard-2011-10-19-03-00-27</option>
-                                <option>clovr-standard-2015-08-06-19-44-18</option>
-                                <option>clovr-standard-2016-05-27-17-04-01</option>
-                            </select>
-
-                            <label for="instance_type_select">Select Instance Type</label>
-                            <select id-"instance_type_select" class="form-control">
-                                <option>m1.xlarge (8 CPUs / 16GB RAM)</option>
-                                <option>m2.xlarge (8 CPUs / 32GB RAM)</option>
-                                <option>m4.xlarge (4 CPUs / 128GB RAM)</option>
-                                <option>c2.large (16 CPUs / 8GB RAM)</option>
-                            </select>
-
-                        </div>
-                    </div>                        
-                </div>
-            </div>            
-        </div>
-        <!-- /#page-content-wrapper -->
+{% block sidebar %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div id="page-wrapper">
+    <div class="row border-bottom">
+        <nav class="nav navbar-static-top">
+        <br />
+        </nav>
     </div>
-    <!-- /#wrapper -->
+    <div class="row fix-margin wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9 fix-padding">
+           <h2>Start a CloVR VM on EC2</h2>
+        </div>
+    </div>    
+    <div class="row border-bottom"><br /></div>
+        <div class="row fix-margin border-bottom white-bg spacer-top">
+            <div class="col-lg-12 launch-ec2">
+                <div class="ec2-text">
+                    <span>
+                        <img alt="EC2 logo" id="ec2_logo" src="{{ url_for('static', filename='img/ec2-logo-transparent.png') }}">
+                    </span>
+                    <p class="small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p class="small spacer-bottom">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    <div class="text-center">
+                        <button class="button clovr-start" data-toggle="modal" data-target="#ec2-warn-launch">Launch CloVR</button>
+                    </div>
+                    <div class="text-center">
+                        <small><u class="dotted"><a class="toggle" href="#vm_options">More options</a></u></small>
+                    </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+                    <div id="vm_options" class="hidden center-block text-center">
+                        <label for="ami_select">Select VM Image</label>
+                        <select id-"ami_select" class="form-control">
+                            <option>clovr-standard-2011-07-01-11-04-17</option>
+                            <option>clovr-standard-2011-10-19-03-00-27</option>
+                            <option>clovr-standard-2015-08-06-19-44-18</option>
+                            <option>clovr-standard-2016-05-27-17-04-01</option>
+                        </select>
 
-    <!-- Bootstrap Dialog JavaScript -->
-    <script src="js/bootstrap-dialog.min.js"></script>
- 
-    <!-- Thin Client JS -->
-    <script src="js/clovr_thin_client.js"></script>
+                        <label for="instance_type_select">Select Instance Type</label>
+                        <select id-"instance_type_select" class="form-control">
+                            <option>m1.xlarge (8 CPUs / 16GB RAM)</option>
+                            <option>m2.xlarge (8 CPUs / 32GB RAM)</option>
+                            <option>m4.xlarge (4 CPUs / 128GB RAM)</option>
+                            <option>c2.large (16 CPUs / 8GB RAM)</option>
+                        </select>
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-
-</body>
-
-</html>
+                    </div>
+                </div>                        
+            </div>
+        </div>            
+    </div>
+</div>
+{% endblock %}
