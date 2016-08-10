@@ -16,6 +16,10 @@ def start_vm():
 def manage_vms():
     return render_template('manage_vms.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/logout')
 def logout():
     return render_template('login.html')

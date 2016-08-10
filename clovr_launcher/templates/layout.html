@@ -5,32 +5,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
-
         <link rel="stylesheet" href="{{ url_for('static', filename='css/clovr-thin-client.css') }}"/>
-
         <link rel="stylesheet" href="{{ url_for('static', filename='css/chardinjs.css') }}"/>
-
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-dialog.min.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.min.css') }}"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}"/>
 
-        <!-- jQuery -->
-        <script src="/static/js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="/static/js/bootstrap.min.js"></script>
-
-        <!-- Bootstrap Dialog JavaScript -->
-        <script src="/static/js/bootstrap-dialog.min.js"></script>
-     
-        <!-- Thin Client JS -->
-        <script src="/static/js/clovr_thin_client.js"></script>
-
-        <!-- Menu Toggle Script -->
-        <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        </script>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 
         <title>CloVR-Launcher - {% block title %}{% endblock %}</title>
     </head>
@@ -69,4 +50,33 @@
         {%  block nosidebar %}{% endblock %}
 
     </body>
+
+    <!-- JQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
+    <!-- JQuery Data Tables -->
+    <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Bootstrap Data Tables -->
+    <script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"</script>
+
+    <!-- Bootstrap Dialog JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap-dialog.min.js') }}"></script>
+
+    <!-- Chardin -->
+    <script src="{{ url_for('static', filename='js/chardinjs.min.js') }}"></script
+        
+    <!-- Thin Client JS -->
+    <script src="{{ url_for('static', filename='js/clovr_thin_client.js') }}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </html>

@@ -3,9 +3,10 @@
 
 {% block head %}
 {{ super() }}
-{% block title %}Login{% endblock %}
 {% endblock %}
+{% block title %}Login{% endblock %}
 
+{% block sidebar %}{% endblock %}
 {% block nosidebar %}
 <div class="container sign-up">
     <div class="row">
@@ -15,7 +16,7 @@
                 <div class="tab-pane fade in active" id="new">
                     <br />
                     <span>
-                        <img alt="CloVR logo" class="clovr-logo" src="img/logo-transparent-login.png" />
+                        <img alt="CloVR logo" class="clovr-logo" src="{{ url_for('static', filename='img/logo-transparent-login.png') }}" />
                     </span>
                     <hr />
                     <fieldset>

@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 #--------------------------------------------------------------------------------
-# Apache
+# Apache Setup
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -35,19 +35,29 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 ENV APACHE_RUN_DIR /var/run/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-
 EXPOSE 80
 
-ADD ./application/www /var/www
+COPY ./clovr-launcher.conf /etc/apache2/sites-available/clovr-launcher.conf
 RUN chown -R www-data:www-data /var/www
+RUN a2ensite clovr-launcher
+RUN a2enmod headers
 
 #--------------------------------------------------------------------------------
-# Python
-RUN pip install flask
+# Flask App + WSGI Setup
 
+COPY ./clovr_launcher/requirements.txt /var/www/clovr-launcher/clovr_launcher/requirements.txt
+RUN pip install -r /var/www/clovr-launcher/clovr_launcher/requirements.txt
+ 
+COPY ./clovr-launcher.wsgi /var/www/clovr-launcher/clovr_launcher/clovr-launcher.wsgi
+COPY ./runserver.py /var/www/clovr-launcher/runserver.py
+COPY ./clovr_launcher /var/www/clovr-launcher/clovr_launcher/
+
+RUN a2dissite 000-default.conf
+RUN a2ensite clovr-launcher.wsgi
+
+WORKDIR /var/www/clovr-launcher
 
 #--------------------------------------------------------------------------------
-# Default Command
+# Start Apache2
 
 CMD [ "/usr/sbin/apache2ctl", "-DFOREGROUND" ]
