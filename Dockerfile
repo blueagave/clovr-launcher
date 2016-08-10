@@ -11,7 +11,7 @@ MAINTAINER Cesar Arze <carze@uni-hohenheim.de>
 #--------------------------------------------------------------------------------
 # Install
 
-echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main universe" >> /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main universe" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
@@ -48,12 +48,12 @@ RUN a2enmod headers
 COPY ./clovr_launcher/requirements.txt /var/www/clovr-launcher/clovr_launcher/requirements.txt
 RUN pip install -r /var/www/clovr-launcher/clovr_launcher/requirements.txt
  
-COPY ./clovr-launcher.wsgi /var/www/clovr-launcher/clovr_launcher/clovr-launcher.wsgi
+COPY ./clovr-launcher.wsgi /var/www/clovr-launcher/clovr-launcher.wsgi
 COPY ./runserver.py /var/www/clovr-launcher/runserver.py
 COPY ./clovr_launcher /var/www/clovr-launcher/clovr_launcher/
 
 RUN a2dissite 000-default.conf
-RUN a2ensite clovr-launcher.wsgi
+RUN a2ensite clovr-launcher.conf
 
 WORKDIR /var/www/clovr-launcher
 
