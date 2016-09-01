@@ -1,5 +1,1 @@
-from flask import Flask
-
-app = Flask(__name__, static_folder="static")
-
-import clovr_launcher.views
+"""Main application package."""

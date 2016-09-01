@@ -13,6 +13,7 @@ itsdangerous==0.24
 Flask-SQLAlchemy==2.1
 psycopg2==2.6.1
 SQLAlchemy==1.0.12a
+Flask-Migrate==2.0.0
 
 ## Auth
 Flask-Login=0.3.2
