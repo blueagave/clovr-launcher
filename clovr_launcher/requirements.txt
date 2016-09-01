@@ -1,6 +1,22 @@
-boto3==1.4.0
+## Python modules required
+
+wheel==0.29.0
+
+## Flask
 Flask==0.11.1
 Jinja2==2.8
 MarkupSafe==0.23
 Werkzeug==0.11.10
-wheel==0.29.0
+itsdangerous==0.24
+
+## Database
+Flask-SQLAlchemy==2.1
+psycopg2==2.6.1
+SQLAlchemy==1.0.12a
+
+## Auth
+Flask-Login=0.3.2
+Flask-Bcrypt==0.7.1
+
+## EC2
+boto3==1.4.0
