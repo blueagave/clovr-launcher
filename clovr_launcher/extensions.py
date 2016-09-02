@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache

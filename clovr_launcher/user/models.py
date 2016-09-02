@@ -4,8 +4,8 @@ import datetime as dt
 
 from flask_login import UserMixin
 
-from clovr_launcher.database import Column, Model, SurrogatePK, db, \ 
-                                    reference_col, relationship
+from clovr_launcher.database import (Column, Model, SurrogatePK, db, 
+                                     reference_col, relationship)
 from clovr_launcher.extensions import bcrypt
 
 class Credential(UserMixin, SurrogatePK, Model):
@@ -17,7 +17,7 @@ class Credential(UserMixin, SurrogatePK, Model):
 
     For a credential the "password" is simulated by using AWS access key ID
     and AWS secret key."""
-    __tablename__ == "credentials"
+    __tablename__ = "credentials"
 
     password = Column(db.String(60), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
@@ -34,7 +34,7 @@ class Credential(UserMixin, SurrogatePK, Model):
 
         db.Model.__init__(self, 
                           credential_name=credential_name, 
-                          authenticated = False
+                          authenticated = False,
                           aws_access_key=enc_access_key,
                           aws_secret_key=enc_secret_key,
                           password=enc_access_key + enc_secret_key,

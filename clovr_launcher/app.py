@@ -5,11 +5,11 @@
 from flask import Flask, render_template
 
 from clovr_launcher import public, user, vm
-from clovr_launcher.extensions import bcrypt, cache, db, login_manager
-from clovr_launcher.settings import DevelConfig
+from clovr_launcher.extensions import bcrypt, cache, db, login_manager, migrate
+from clovr_launcher.settings import DevConfig
 
 
-def create_app(config_object=DevelConfig):
+def create_app(config_object=DevConfig):
     """An application factor.
 
     :param config_object: The configuration object to use.
@@ -62,5 +62,3 @@ def register_shellcontext(app):
             'User': user.models.User}
 
     app.shell_context_processor(shell_context)
-
-

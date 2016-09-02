@@ -5,8 +5,8 @@
 
 from sqlalchemy.orm import relationship
 
-from .compat import basestring
 from .extensions import db
+
 
 # Alias common SQLAlchemy names
 Column = db.Column

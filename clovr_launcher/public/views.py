@@ -3,8 +3,8 @@
 from flask import Blueprint, render_template, flash, redirect, session, url_for, request, g, Markup
 from flask_login import login_required, login_user, logout_user
 
-from clovr_launcher import app
-from clovr_launcher.user.models import User
+from clovr_launcher.user.models import Credential
+from clovr_launcher.extensions import login_manager
 
 blueprint = Blueprint('public', '__name__', static_folder='../static')
 
@@ -13,7 +13,7 @@ blueprint = Blueprint('public', '__name__', static_folder='../static')
 def load_user(user_id):
     """Load user by ID."""
     ## Likely need to change this for our use case...
-    return User.get_by_id(int(user_id))
+    return Credential.get_by_id(user_id)
 
 
 @blueprint.route('/', methods=['GET', 'POST'])

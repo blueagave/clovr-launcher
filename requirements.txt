@@ -11,13 +11,18 @@ itsdangerous==0.24
 
 ## Database
 Flask-SQLAlchemy==2.1
-psycopg2==2.6.1
-SQLAlchemy==1.0.12a
+#psycopg2==2.6.1
+SQLAlchemy==1.1.0b3
+
+# Migrations
 Flask-Migrate==2.0.0
 
 ## Auth
-Flask-Login=0.3.2
+Flask-Login==0.3.2
 Flask-Bcrypt==0.7.1
+
+# Caching
+Flask-Caching>=1.0.0
 
 ## EC2
 boto3==1.4.0

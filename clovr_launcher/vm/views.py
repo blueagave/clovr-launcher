@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, flash, redirect, session, url_for, request, g, Markup
-from clovr_launcher import app
+from flask import Blueprint, render_template, flash, redirect, session, url_for, request, g, Markup
+from flask_login import login_required
+
 
 blueprint = Blueprint('vm', __name__, url_prefix='/vms', static_folder='../static')
 
@@ -13,6 +14,6 @@ def start_vm():
 
 
 @login_required
-@app.route('/manage')
+@blueprint.route('/manage')
 def manage_vms():
     return render_template('manage_vms.html')
