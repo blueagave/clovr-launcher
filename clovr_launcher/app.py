@@ -4,8 +4,8 @@
 
 from flask import Flask, render_template
 
-from clovr_launcher import public, user, vm
-from clovr_launcher.extensions import bcrypt, cache, db, login_manager, migrate
+from clovr_launcher import public, user, vm, api
+from clovr_launcher.extensions import cache, db, login_manager, migrate, csrf_protect
 from clovr_launcher.settings import DevConfig
 
 
@@ -26,10 +26,11 @@ def create_app(config_object=DevConfig):
 
 def register_extensions(app):
     """Register Flask extensions."""
-    bcrypt.init_app(app)
     cache.init_app(app)
     db.init_app(app)
+    csrf_protect.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = 'public.login'
     migrate.init_app(app, db)
     return None
 
@@ -38,6 +39,8 @@ def register_blueprints(app):
     """Register Flask blueprints."""
     app.register_blueprint(public.views.blueprint)
     app.register_blueprint(user.views.blueprint)
+    app.register_blueprint(vm.views.blueprint)
+    app.register_blueprint(api.views.blueprint)
     return None
 
 

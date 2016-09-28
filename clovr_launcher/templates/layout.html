@@ -29,13 +29,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url_for('start_vm') }}"><i class="fa fa-fw fa-cloud"></i>Start a CloVR VM</a>
+                        <a href="{{ url_for('vm.start_vm') }}"><i class="fa fa-fw fa-cloud"></i>Start a CloVR VM</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('manage_vms') }}"><i class="fa fa-fw fa-bar-chart-o"></i>Manage VM's</a>
+                        <a href="{{ url_for('vm.manage_vms') }}"><i class="fa fa-fw fa-bar-chart-o"></i>Manage VM's</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('logout') }}"><i class="fa fa-fw fa-sign-out"></i>Exit</a>
+                        <a href="{{ url_for('public.logout') }}"><i class="fa fa-fw fa-sign-out"></i>Exit</a>
                     </li>
                 </ul>
             </div>

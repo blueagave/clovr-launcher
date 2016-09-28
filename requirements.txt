@@ -2,27 +2,31 @@
 
 wheel==0.29.0
 
-## Flask
+# Flask
 Flask==0.11.1
 Jinja2==2.8
 MarkupSafe==0.23
 Werkzeug==0.11.10
 itsdangerous==0.24
 
-## Database
+# Database
 Flask-SQLAlchemy==2.1
 #psycopg2==2.6.1
 SQLAlchemy==1.1.0b3
 
+# Forms
+Flask-WTF==0.12
+WTForms==2.1
+
 # Migrations
 Flask-Migrate==2.0.0
 
-## Auth
+# Auth
 Flask-Login==0.3.2
-Flask-Bcrypt==0.7.1
+backports.pbkdf2==0.1
 
 # Caching
 Flask-Caching>=1.0.0
 
-## EC2
+# EC2
 boto3==1.4.0

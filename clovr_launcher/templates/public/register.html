@@ -4,7 +4,7 @@
 {% block head %}
 {{ super() }}
 {% endblock %}
-{% block title %}Login{% endblock %}
+{% block title %}Register New Account{% endblock %}
 
 {% block sidebar %}{% endblock %}
 {% block nosidebar %}
@@ -14,9 +14,9 @@
 <div class="row">
   <div class="col-md-12">
     {% for category, message in messages %}
-    <div class="alert alert-{{ category }}" role="alert">
+    <div class="alert alert-{{ category }}">
       <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
-      <strong>{{message}}</strong>
+     {{message}}
     </div><!-- end .alert -->
     {% endfor %}
   </div><!-- end col-md -->
@@ -35,7 +35,7 @@
                         <img alt="CloVR logo" class="clovr-logo" src="{{ url_for('static', filename='img/logo-transparent-login.png') }}" />
                     </span>
                     <hr />
-                    <form id="loginForm" method="POST" action="{{ url_for('public.login') }}" role="login">
+                    <form method="POST" action="{{ url_for('public.register') }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <fieldset>
                             <div class="form-group">
@@ -44,22 +44,43 @@
                                     {{ form.username(class="form-control input-lg") }}
                                 </div>
                             </div>   
-
+                            
                             <div class="form-group">
-                                <div class="right-inner-addon" data-position="right" data-intro="Provide a name for your credentials.">
+                                <div class="right-inner-addon">
                                     <i class="fa fa-lock"></i>
                                     {{ form.password(class="form-control input-lg") }}
                                 </div>
-                            </div>   
+                            </div>
+
+                            <div class="form-group">
+                                <div class="right-inner-addon">
+                                    <i class="fa fa-warning"></i>
+                                    {{ form.confirm(class="form-control input-lg") }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="right-inner-addon">
+                                    <i class="fa fa-cubes"></i>
+                                    {{ form.access_key(class="form-control input-lg") }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="right-inner-addon">
+                                    <i class="fa fa-cubes"></i>
+                                    {{ form.secret_key(class="form-control input-lg") }}
+                                </div>
+                            </div>
                         </fieldset>
 
                         <div class="text-center">
-                            <u class="dotted"><a href="{{ url_for('public.register') }} ">Register an Account</a></u>
+                            <u class="dotted"><a id="toggle_help" class="help-text text-center" href="#">Give me some help here!</a></u>
                         </div>
 
                         <br>
-                        <div class=" text-center">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                        <div class=" text-center" data-position="bottom">
+                            <button class="btn btn-primary btn-lg btn-block">Register</button>
                         </div>
                     </form>
                 </div>
