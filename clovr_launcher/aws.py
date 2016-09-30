@@ -21,9 +21,26 @@ def _connect(secret_key, access_key):
     :param secret_key: AWS secret access key 
     :param access_key: AWS access key 
     """
-    return boto3.client('ec2',
-                        aws_access_key_id=access_key,
-                        aws_secret_access_key=secret_key)
+    return boto3.resource('ec2',
+                           region_name='us-east-1',
+                           aws_access_key_id=access_key,
+                           aws_secret_access_key=secret_key)
+
+
+def validate_credentials(secret_key, access_key):
+    """Verifies whether or not the supplied secret key and access key are
+    valid. 
+    """
+    client = _connect(access_key, secret_key)
+    valid = True
+
+    try:
+        for i in client.instances.all(): print(i)
+    except botocore.exceptions.ClientError as ce:
+        if ce.response['Error']['Code'] == "AuthFailure":
+            valid = False
+
+    return valid
 
 
 def list_instances(secret_key, access_key,instance_id=[]):
@@ -38,12 +55,14 @@ def list_instances(secret_key, access_key,instance_id=[]):
     response = {}
    
     try:
-        client = _connect(secret_key, access_key)
+        #client = _connect(secret_key, access_key)
+        client = _connect(access_key, secret_key)
 
-        instances = ec2.instances.filter(InstanceIds=instance_id)
+        instances = client.instances.filter(InstanceIds=instance_id)
         response['status'] = "ok"
+        raise Exception('xyz')
         response['instances'] = instances
-    except ClientError as ce:
+    except botocore.exceptions.ClientError as ce:
         if ce.response['Error']['Code'] == "InvalidInstanceID.Malformed":
             response['status'] = "error"
             response['message'] = "Instance ID does not exist or is malformed."

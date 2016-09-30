@@ -9,8 +9,8 @@ from clovr_launcher.aws import start_instances, terminate_instances, list_instan
 blueprint = Blueprint('api', __name__, url_prefix='/api', static_folder='../static')
 
 
-@login_required
 @blueprint.route('/instances/', methods=['GET'])
+@login_required
 def get_instances():
     """Retrieves all instances for the currently logged in user."""
     resp = list_instances(current_user.aws_access_key, current_user.aws_secret_key)
@@ -21,8 +21,8 @@ def get_instances():
     return jsonify(resp)
 
 
-@login_required
 @blueprint.route('/instances/<string:instance_id>', methods=['GET'])
+@login_required
 def get_instance(instance_id):
     """Retrieves a specific EC2 instance provided an EC2 instance ID for the 
     currently logged in user."""
@@ -36,8 +36,8 @@ def get_instance(instance_id):
     return jsonify(resp)        
 
 
-@login_required
 @blueprint.route('/instances/', methods=['POST'])
+@login_required
 def start_instance():
     """Launches an EC2 instance with the provided information from the user:
             {
@@ -49,15 +49,15 @@ def start_instance():
     pass
 
 
-@login_required
 @blueprint.route('/instances/', methods=['DELETE'])
+@login_required
 def terminate_instances():
     """Terminates all current running EC2 instances for the logged in user."""
     pass
 
 
-@login_required
 @blueprint.route('/instances/<string:instance_id>', methods=['DELETE'])
+@login_required
 def terminate_instance(instance_id):
     """Terminates a specific EC2 instance provided an EC2 instance ID."""
     pass

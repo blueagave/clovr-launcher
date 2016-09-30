@@ -39,38 +39,66 @@
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <fieldset>
                             <div class="form-group">
-                                <div class="right-inner-addon">
+                                <div class="right-inner-addon {% if form.username.errors %} has-error {% endif %}">
                                     <i class="fa fa-user"></i>
                                     {{ form.username(class="form-control input-lg") }}
                                 </div>
+                                {% if form.username.errors %}
+                                    <div class="has-error">
+                                        <span>{% for error in form.username.errors %}{{ error }}{% endfor %}</span>
+                                    </div>
+                                {% endif %}
                             </div>   
                             
-                            <div class="form-group">
-                                <div class="right-inner-addon">
+                            <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                                <div class="right-inner-addon has-danger">
                                     <i class="fa fa-lock"></i>
                                     {{ form.password(class="form-control input-lg") }}
                                 </div>
+
+                                {% if form.password.errors %}
+                                    <div class="has-error">
+                                        <span>{% for error in form.password.errors %}{{ error }}{% endfor %}</span>
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="form-group">
-                                <div class="right-inner-addon">
+                                <div class="right-inner-addon {% if form.confirm.errors %} has-error {% endif %}">
                                     <i class="fa fa-warning"></i>
                                     {{ form.confirm(class="form-control input-lg") }}
                                 </div>
+
+                                {% if form.confirm.errors %}
+                                    <div class="has-error">
+                                        <span>{% for error in form.confirm.errors %}{{ error }}{% endfor %}</span>
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="form-group">
-                                <div class="right-inner-addon">
+                                <div class="right-inner-addon {% if form.access_key.errors %} has-error {% endif %}">
                                     <i class="fa fa-cubes"></i>
                                     {{ form.access_key(class="form-control input-lg") }}
                                 </div>
+                                {% if form.access_key.errors %}
+                                    <div class="has-error">
+                                        <span>{% for error in form.access_key.errors %}{{ error }}{% endfor %}</span>
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="form-group">
-                                <div class="right-inner-addon">
+                                <div class="right-inner-addon {% if form.secret_key.errors %} has-error {% endif %}">
                                     <i class="fa fa-cubes"></i>
                                     {{ form.secret_key(class="form-control input-lg") }}
                                 </div>
+                                {% if form.secret_key.errors %}
+                                    <div class="has-error">
+                                        <span>{% for error in form.secret_key.errors %}{{ error }}{% endfor %}</span>
+                                    </div>
+                                {% endif %}
+
                             </div>
                         </fieldset>
 
