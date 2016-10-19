@@ -50,7 +50,7 @@ thead > tr > th {
 #ec2_logo {
     width: 550px;
     height: 153px;
-    margin: 12px 0 12px 0;
+    margin: 12px 0 15px 0;
 }
 
 .ec2-monitor table thead th {
@@ -560,4 +560,26 @@ u.dotted {
 
 .has-error span {
     color: red;
+}
+
+#overlay {
+    display: none;
+    background-color: black;
+    position: fixed;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    z-index: 999;
+    opacity: 0.5; /* also -moz-opacity, etc. */
+}
+
+#overlay_center {
+    opacity: 1;
+    position: fixed;
+    left:50%;
+    top:50%;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
 }

@@ -3,6 +3,7 @@
 
 {% block head %}
 {{ super() }}
+<meta name="csrf-token" content="{{ csrf_token() }}">
 {% endblock %}
 {% block title %}Manage VM\'s{% endblock %}
 
@@ -34,123 +35,22 @@
                 <table id="vm_monitor" class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Instance ID</th>
+                            <th>Instance Name</th>
                             <th>Instance Type</th>
                             <th>Instance State</th>
+                            <th>Start Time</th>
                             <th class="terminate"><i class="fa fa-times fa-icon-red"></i></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>i43d22ae</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>i6dfeaaf</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-pend">Pending</td>
-                            <td class="terminate disabled"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>i43asfdef</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-term">Terminated</td>
-                            <td class="terminate disabled"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>i43d22de</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>i43d11ae</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>i43d10be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>i68d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>i77d02be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>i99d15be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">12</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">13</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">14</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">15</th>
-                            <td>i38d12be</td>
-                            <td>m1.xlarge</td>
-                            <td class="instance-run">Running</td>
-                            <td class="terminate"><i class="fa fa-times fa-icon-red"></i></td>
-                        </tr>
-                    </tbody>                                
                 </table>
             </div>            
         </div>
     </div>            
 </div>
+{% endblock %}
+
+{% block jsimport %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/clovr_launcher_manage.js') }}"></script>
 {% endblock %}

@@ -51,6 +51,7 @@
 
     </body>
 
+    {% block jsimport %}
     <!-- JQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
@@ -61,17 +62,14 @@
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
     <!-- Bootstrap Data Tables -->
-    <script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"</script>
+    <script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
 
-    <!-- Bootstrap Dialog JavaScript -->
+    <!-- Bootstrap Dialog -->
     <script src="{{ url_for('static', filename='js/bootstrap-dialog.min.js') }}"></script>
 
     <!-- Chardin -->
-    <script src="{{ url_for('static', filename='js/chardinjs.min.js') }}"></script
+    <script src="{{ url_for('static', filename='js/chardinjs.min.js') }}"></script>
         
-    <!-- Thin Client JS -->
-    <script src="{{ url_for('static', filename='js/clovr_thin_client.js') }}"></script>
-
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
@@ -79,4 +77,5 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+    {% endblock %}
 </html>

@@ -3,13 +3,23 @@
 
 {% block head %}
 {{ super() }}
+<meta name="csrf-token" content="{{ csrf_token() }}">
 {% endblock %}
 {% block title %}Start a CloVR VM{% endblock %}
-
 {% block sidebar %}
+<div id="overlay"></div>
+<div id="overlay_center"></div>
 {{ super() }}
 {% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-md12">
+        <div class="alert alert-danger alert-dismissable fade in" id="start-error" style="display:none;">
+                <button type="button" class="close">×</button>
+        </div>
+    </div>
+</div>
+
 <div id="page-wrapper">
     <div class="row border-bottom">
         <nav class="nav navbar-static-top">
@@ -28,34 +38,30 @@
                     <span>
                         <img alt="EC2 logo" id="ec2_logo" src="{{ url_for('static', filename='img/ec2-logo-transparent.png') }}">
                     </span>
-                    <p class="small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p class="small spacer-bottom">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                    <p class="small">The CloVR Launcher client allows users to launch CloVR VM's on EC2 easily without having to access Amazon's AWS dashboard. The launcher will always start the latest VM on an m1.xlarge instance type (8 CPU cores and 16GB of RAM) unless another version of CloVR or another instance type is selected from the "More Options" sub-menu.</p>
+                    <p class="small spacer-bottom">Upon starting the VM the Launcher's monitor functionality will take several seconds to minutes to refresh the list of running instances so that the new instance is visible. This instance should be identifiable by its state being set at <strong>"pending."</strong> Any VM's started via the CloVR Launcher are not terminated unless explicitly done so through the Manage VM's page.</p>
 
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                     <div class="text-center">
                         <button class="button clovr-start" data-toggle="modal" data-target="#ec2-warn-launch">Launch CloVR</button>
                     </div>
                     <div class="text-center">
                         <small><u class="dotted"><a class="toggle" href="#vm_options">More options</a></u></small>
                     </div>
+                    <form id="vm_start_form">
+                        <div id="vm_options" class="hidden center-block text-center">
+                            <label for="ami_select">Select VM Image</label>
+                            <select id="ami_select" name="ami_id" class="form-control">
+                                <option>Loading...</option>
+                            </select>
 
-                    <div id="vm_options" class="hidden center-block text-center">
-                        <label for="ami_select">Select VM Image</label>
-                        <select id="ami_select" class="form-control">
-                            <option>clovr-standard-2011-07-01-11-04-17</option>
-                            <option>clovr-standard-2011-10-19-03-00-27</option>
-                            <option>clovr-standard-2015-08-06-19-44-18</option>
-                            <option>clovr-standard-2016-05-27-17-04-01</option>
-                        </select>
-
-                        <label for="instance_type_select">Select Instance Type</label>
-                        <select id="instance_type_select" class="form-control">
-                            <option>m1.xlarge (8 CPUs / 16GB RAM)</option>
-                            <option>m2.xlarge (8 CPUs / 32GB RAM)</option>
-                            <option>m4.xlarge (4 CPUs / 128GB RAM)</option>
-                            <option>c2.large (16 CPUs / 8GB RAM)</option>
-                        </select>
-
+                            <label for="instance_type_select">Select Instance Type</label>
+                            <select id="instance_type_select" name="instance_type" class="form-control">
+                                <option value="m1.xlarge">m1.xlarge (8 CPUs / 16GB RAM)</option>
+                                <option value="m2.xlarge">m2.xlarge (8 CPUs / 32GB RAM)</option>
+                                <option value="m4.xlarge">m4.xlarge (4 CPUs / 128GB RAM)</option>
+                                <option value="c2.large">c2.large (16 CPUs / 8GB RAM)</option>
+                            </select>
+                    </form>
                     </div>
                 </div>                        
             </div>
@@ -63,3 +69,9 @@
     </div>
 </div>
 {% endblock %}
+
+{% block jsimport %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/clovr_launcher_start.js') }}"></script>
+{% endblock %}
+

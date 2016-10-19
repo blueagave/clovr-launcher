@@ -1,12 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template, jsonify, abort
+from flask import Blueprint, render_template, jsonify, abort, request
 from flask_login import login_required, current_user
 
-from clovr_launcher.aws import start_instances, terminate_instances, list_instances
+from clovr_launcher.aws import start_instances, terminate_instances, list_instances, get_clovr_amis
 
 
 blueprint = Blueprint('api', __name__, url_prefix='/api', static_folder='../static')
+
+
+@blueprint.errorhandler(Exception)
+def handle_server_error(error):
+    response = jsonify({
+        'success': False,
+        'message': str(error),
+        'status_code': 500
+    })
+
+    return response, 500
+
+
+@blueprint.route('/ami/', methods=['GET'])
+def get_ami_ids():
+    """Retrieves a list of all AMI names and AMI ID's for all CloVR images
+    currently found on the us-east-1 region of EC2."""
+    resp = get_clovr_amis(current_user.aws_access_key, current_user.aws_secret_key)
+    return jsonify(resp)
 
 
 @blueprint.route('/instances/', methods=['GET'])
@@ -15,7 +34,7 @@ def get_instances():
     """Retrieves all instances for the currently logged in user."""
     resp = list_instances(current_user.aws_access_key, current_user.aws_secret_key)
 
-    if resp.get('status') != "ok":
+    if not resp.get('success'):
        abort(500)
 
     return jsonify(resp)
@@ -28,10 +47,7 @@ def get_instance(instance_id):
     currently logged in user."""
     resp = list_instances(current_user.aws_access_key,
                           current_user.aws_secret_key,
-                          instance_id)
-
-    if resp.get('status') != "ok":
-        abort(500)
+                          [instance_id])
 
     return jsonify(resp)        
 
@@ -46,7 +62,12 @@ def start_instance():
                 security_group: <NAME OF SECURITY GROUP TO USE>
             }
     """
-    pass
+    resp = start_instances(current_user.aws_access_key, 
+                           current_user.aws_secret_key,
+                           request.form.get('ami_id'),
+                           request.form.get('instance_type'))
+    
+    return jsonify(resp)
 
 
 @blueprint.route('/instances/', methods=['DELETE'])
