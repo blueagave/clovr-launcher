@@ -93,7 +93,7 @@ def list_instances(access_key, secret_key, instance_id=[]):
                               'name': instance.image.name,
                               'state': instance.state.get('Name'),
                               'instance_type': instance.instance_type,
-                              'address': instance.public_ip_address,
+                              'address': instance.public_dns_name,
                               'start_time': _format_date(instance.launch_time)
                              })
 
@@ -116,7 +116,7 @@ def _create_clovr_security_group(client, enable_ssh=False):
     :param enable_ssh: True/False to open up access to port 22 
     :rtype: None
     """
-    sec_group = client.create_security_group(GroupName='clovr', 
+    sec_group = client.create_security_group(GroupName='clovr-launcher',
                                              Description='Ports required to run CloVR on EC2')
     sec_group.authorize_ingress(IpProtocol='tcp', FromPort=80, ToPort=80, CidrIp='0.0.0.0/0')
     
@@ -142,14 +142,16 @@ def start_instances(access_key, secret_key, ami_id, instance_type, num_instances
         ## We need to check if a security group that has the port for HTTP 
         ## open exists and if not create it.
         sec_groups = client.security_groups.filter(Filters=[{"Name": "group-name",
-                                                             "Values": ["clovr"]}])
-        if not sec_groups:
+                                                             "Values": ["clovr-launcher"]}])
+        if not list(sec_groups.all()):
             _create_clovr_security_group(client)
         
         instances = client.create_instances(ImageId=ami_id, 
                                             MinCount=num_instances,
                                             MaxCount=num_instances,
-                                            InstanceType=instance_type)
+                                            InstanceType=instance_type,
+                                            SecurityGroups=['clovr-launcher']
+                                           )
         response['success'] = True
         response['instances'] = [instance.id for instance in instances]
     except botocore.exceptions as be:
@@ -158,7 +160,7 @@ def start_instances(access_key, secret_key, ami_id, instance_type, num_instances
     return response
 
 
-def terminate_instances(secret_key, access_key, instance_ids):
+def terminate_instances(access_key, secret_key, instance_ids):
     """Terminates all specified instance.
 
     :param secret_key: AWS secret access key
@@ -169,11 +171,10 @@ def terminate_instances(secret_key, access_key, instance_ids):
     response = {}
 
     try:
-        client = _connect(secret_key, access_key)
-        instances = client.instances.filter(InstanceIds=instance_ids).terminate()
-        response['status'] = "ok"
-        response['instances'] = instances
-    except botocore.exceptions.ClientError as ce:
-        pass
+        client = _connect(access_key, secret_key)
+        client.instances.filter(InstanceIds=instance_ids).terminate()
+        response['success'] = True
+    except botocore.exceptions.ClientError as be:
+        raise Exception(500, be.msg)
 
     return response

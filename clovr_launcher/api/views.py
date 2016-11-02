@@ -72,13 +72,18 @@ def start_instance():
 
 @blueprint.route('/instances/', methods=['DELETE'])
 @login_required
-def terminate_instances():
+def stop_instances():
     """Terminates all current running EC2 instances for the logged in user."""
     pass
 
 
+
 @blueprint.route('/instances/<string:instance_id>', methods=['DELETE'])
 @login_required
-def terminate_instance(instance_id):
+def stop_instance(instance_id):
     """Terminates a specific EC2 instance provided an EC2 instance ID."""
-    pass
+    resp = terminate_instances(current_user.aws_access_key,
+                               current_user.aws_secret_key,
+                               [instance_id])
+
+    return jsonify(resp)

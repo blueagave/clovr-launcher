@@ -583,3 +583,38 @@ u.dotted {
     height: 100px;
     margin: -50px 0 0 -50px;
 }
+
+.ami-id {
+    font-weight: bold;
+}
+
+.vm-time {
+    font-style: italic;
+}
+
+.clicky {
+    cursor: pointer;
+}
+
+.state-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.state-running {
+    color: green;
+    font-weight: bold;
+}
+
+.state-terminated {
+    color: red;
+    font-weight: bold;
+}
+
+.terminate-disable {
+    opacity: 0.3;
+}
+
+.terminate-enable {
+    opacity: 1;
+}

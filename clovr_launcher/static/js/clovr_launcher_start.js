@@ -31,7 +31,8 @@ $('.clovr-start').on('click', function() {
 							xhr.setRequestHeader("X-CSRFToken", csrftoken)
 						}
 					}
-				})
+				});
+
                 $.ajax({
                     type: 'POST',
                     url: '/api/instances/',

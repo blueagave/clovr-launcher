@@ -11,6 +11,19 @@
 {{ super() }}
 {% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-md12">
+        <div class="alert alert-danger alert-dismissable fade in" id="terminate-error" style="display:none;">
+                <button type="button" class="close">×</button>
+        </div>
+
+        <div class="alert alert-success alert-dismissable fade in" id="status-msg" style="display:none;">
+                <button type="button" class="close">×</button>
+        </div>
+    </div>
+
+</div>
+
 <!-- Page Content -->
 <div id="page-wrapper">
     <div class="row border-bottom">
@@ -32,14 +45,14 @@
             <div class="ec2-monitor">
                 <p class="small">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
 
-                <table id="vm_monitor" class="table table-bordered table-hover table-striped">
+                <table id="vm_monitor" class="table table-bordered table-hover table-striped order-column">
                     <thead>
                         <tr>
                             <th>Instance ID</th>
                             <th>Instance Name</th>
                             <th>Instance Type</th>
                             <th>Instance State</th>
-                            <th>Start Time</th>
+                            <th>Start Date</th>
                             <th class="terminate"><i class="fa fa-times fa-icon-red"></i></th>
                         </tr>
                     </thead>
